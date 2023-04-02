@@ -9,95 +9,96 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div id="frame">
-      <div id="home"></div>
 
+    <div id="home">
+    </div>
+
+    <div id="gameBoard">
+      <!-- top secction -->
       <div id="battleground">
-        <img src="img/background/bgBackground.png">
-        <!-- top secction -->
-        <div>
 
-          <!-- Player 1 side -->
-          <div>
+        <!-- Player 1 side -->
+        <div id="p1Side">
 
-            <!-- P2 name/tokens -->
-            <div>databox
-                <div>name</div>
-                <div>token</div>
-                <div>token</div>
-                <div>token</div>
-            </div>
-
-            <!-- Blank Space -->
-            <div></div>
-
-            <!-- P1 + Pokemon -->
-            <div> base
-                <div>player</div>
-                <div>Pokemon</div>
-            </div>
-
+          <!-- P2 name/tokens -->
+          <div class="sideTop">
+            <img src="img/background/p2Databox.png">
+              <div id="p2Name">Player 2</div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
           </div>
 
-          <!-- Middle Space -->
-          <div>
-            <div></div>
+          <!-- Blank Space -->
+          <div class="sideMiddle"></div>
 
-            <div id="board">
-                <div>
-                  <div onclick="play(0,0)"></div>
-    
-                  <div onclick="play(0,1)"></div>
-    
-                  <div onclick="play(0,2)"></div>
-                </div>
-                <div>
-                  <div onclick="play(1,0)"></div>
-    
-                  <div onclick="play(1,1)"></div>
-    
-                  <div onclick="play(1,2)"></div>
-                </div>
-                <div>
-                  <div onclick="play(2,0)"></div>
-    
-                  <div onclick="play(2,1)"></div>
-    
-                  <div onclick="play(2,2)"></div>
-                </div>
-              </div>
-
-            <div></div>
-    
-          </div>
-
-
-          <!-- Player 2 side -->
-          <div>
-            <!-- Blank Space -->
-            <div></div>
-
-            <!-- P2 + Pokemon -->
-            <div>base
-                <div>player</div>
-                <div>Pokemon</div>
-            </div>
-
-            <!-- P1 name/tokens -->
-            <div>databox
-                <div>name</div>
-                <div>token</div>
-                <div>token</div>
-                <div>token</div>
-            </div>
+          <!-- P1 + Pokemon -->
+          <div class="sideBottom"> 
+            <img src="img/background/p1Base.png">
+            <div class="sprites"> <img src="img/sprites/crimson.png"> </div>
+            <div class="sprites"> <img src="img/sprites/thalapix.png"> </div>
           </div>
 
         </div>
 
-        <!-- bottom section -->
-        <div></div>
+        <!-- Middle Space -->
+        <div id="boardSide">
+          <div id="board">
+              <div>
+                <div onclick="play(0,0)"></div>
+  
+                <div onclick="play(0,1)"></div>
+  
+                <div onclick="play(0,2)"></div>
+              </div>
+              <div>
+                <div onclick="play(1,0)"></div>
+  
+                <div onclick="play(1,1)"></div>
+  
+                <div onclick="play(1,2)"></div>
+              </div>
+              <div>
+                <div onclick="play(2,0)"></div>
+  
+                <div onclick="play(2,1)"></div>
+  
+                <div onclick="play(2,2)"></div>
+              </div>
+        </div>
+        </div>
+
+
+        <!-- Player 2 side -->
+        <div id="p2Side">
+          
+        <!-- Blank Space -->
+          <div class="sideTop"></div>
+
+          <!-- P2 + Pokemon -->
+          <div class="sideMiddle">
+              <div></div>
+              <div></div>
+          </div>
+
+          <!-- P1 name/tokens -->
+          <!-- <div class="sideBottom">
+            <img src="img/background/p1Databox.png">
+              <div id="p1Name">Player 1</div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
+              <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
+          </div> -->
+
+        </div>
 
       </div>
+
+      <!-- bottom section -->
+      <div id="overlay">
+
+      </div>
+
     </div>
 
     <script src="dist/main.js"></script>

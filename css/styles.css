@@ -1,19 +1,126 @@
-#frame {
+body {
     margin: 0;
     padding: 0;
+}
+
+/* Tic Tack Toe Game */
+#gameBoard{
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
   
+    
+}
+
+#battleground{
+    height: 70vh;
+    width: 100vw;
+
     display: flex;
     flex-direction: row;
-  
-    justify-content: space-around;
-    align-items: center;
+
+    background-image: url(../img/background/bgBackground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#overlay{
+    height: 30vh;
+    width: 100vw;
+
+    background-image: url(../img/background/overlayMessage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sideTop{
+    height: 10vh;
+    width: 35vw;
+}
+
+.sideMiddle{
+    height: 25vh;
+    width: 35vw;
+}
+
+.sideBottom{
+    height: 35vh;
+    width: 35vw;
+}
+
+
+/* Player 1 sprites + Player 2 Name*/
+#p1Side{
+    height: 70vh;
+    width: 35vw;
+
+    display: flex;
+    flex-direction: column;
 
 }
 
-#battleground {
-    height: 100vh;
-    width: 100vw;
-    
+#p1Side div{
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+#p1Side .sideTop img{
+    display: flex;
+    position: absolute;
+}
+
+#p2Name {
+    margin-top: 2vh;
+    margin-left: 1vh;
+    margin-right: 3vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+.tokenCount{
+    margin-top: 1vh;
+    margin-left: 6vh;
+    display: flex;
+
+    z-index: 1;
+}
+
+#p1Side .sideBottom {
+    justify-content: center;
+    align-items: end;
+}
+
+#p1Side .sideBottom img{
+
+    position: absolute;
+}
+
+#p1Side .sprites img{
+    z-index: 1;
+    position: relative;
+}
+
+/* Game Board */
+#boardSide{
+    height: 70vh;
+    width: 30vw;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+  
+
 }
 
 #board {
@@ -24,8 +131,8 @@
     justify-content: space-around;
     align-items: flex-start;
   
-    height: 45vh;
-    width: 45vh;
+    height: 30vh;
+    width: 30vh;
 
 }
 
@@ -37,12 +144,54 @@
     justify-content: space-evenly;
     align-items: center;
   
-    height: 14vh;
-    width: 45vh;
+    height: 9vh;
+    width: 30vh;
 }
 
 #board div div {
-    height: 14vh;
-    width: 14vh;
+    height: 9vh;
+    width: 9vh;
     background-color: blueviolet;
 }
+
+
+/* Player 2 sprites + Player 1 Name*/
+#p2Side{
+    height: 70vh;
+    width: 35vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+
+}
+
+/* #p2Side :nth-child(1){
+    height: 10vh;
+    width: 35vw;
+}
+
+#p2Side :nth-child(2){
+    height: 25vh;
+    width: 35vw;
+}
+
+#p2Side div img{
+    display: flex;
+    position: absolute;
+}
+
+#p2Side :nth-child(3){
+    height: 35vh;
+    width: 35vw;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+#p1Name {
+    display: flex;
+    text-align: left;
+    z-index: 1;
+} */
