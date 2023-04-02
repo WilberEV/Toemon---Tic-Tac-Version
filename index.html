@@ -1,16 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="frame">
+      <div id="home"></div>
+
+      <div id="battleground">
+        <img src="img/background/bgBackground.png">
+        <!-- top secction -->
+        <div>
+
+          <!-- Player 1 side -->
+          <div>
+
+            <!-- P2 name/tokens -->
+            <div>databox
+                <div>name</div>
+                <div>token</div>
+                <div>token</div>
+                <div>token</div>
+            </div>
+
+            <!-- Blank Space -->
+            <div></div>
+
+            <!-- P1 + Pokemon -->
+            <div> base
+                <div>player</div>
+                <div>Pokemon</div>
+            </div>
+
+          </div>
+
+          <!-- Middle Space -->
+          <div>
+            <div></div>
+
+            <div id="board">
+                <div>
+                  <div onclick="play(0,0)"></div>
     
+                  <div onclick="play(0,1)"></div>
     
+                  <div onclick="play(0,2)"></div>
+                </div>
+                <div>
+                  <div onclick="play(1,0)"></div>
+    
+                  <div onclick="play(1,1)"></div>
+    
+                  <div onclick="play(1,2)"></div>
+                </div>
+                <div>
+                  <div onclick="play(2,0)"></div>
+    
+                  <div onclick="play(2,1)"></div>
+    
+                  <div onclick="play(2,2)"></div>
+                </div>
+              </div>
+
+            <div></div>
+    
+          </div>
+
+
+          <!-- Player 2 side -->
+          <div>
+            <!-- Blank Space -->
+            <div></div>
+
+            <!-- P2 + Pokemon -->
+            <div>base
+                <div>player</div>
+                <div>Pokemon</div>
+            </div>
+
+            <!-- P1 name/tokens -->
+            <div>databox
+                <div>name</div>
+                <div>token</div>
+                <div>token</div>
+                <div>token</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- bottom section -->
+        <div></div>
+
+      </div>
+    </div>
+
     <script src="dist/main.js"></script>
-</body>
+  </body>
 </html>
