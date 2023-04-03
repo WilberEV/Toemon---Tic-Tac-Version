@@ -109,6 +109,8 @@ body {
     z-index: 1;
 }
 
+#p1Side .tokenCount:nth-child(2){}
+
 #p1Side .sideBottom {
     justify-content: center;
     align-items: end;
