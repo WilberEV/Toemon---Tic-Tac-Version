@@ -1,22 +1,57 @@
+let introPage = 0
+let mainChara = 0
 let board = [
   [0, 0, 0],
   [0, 0, 0],
   [0, 0, 0],
 ];
-let player = 1;
+let playerTurn = 1;
 let NPC = false;
 let p1Tokens = 3;
 let p2Tokens = 3;
+
+const toggle = (from, to) => {
+  from.classList.add("none");
+  to.classList.remove("none");
+};
+
+const introText = () =>{
+  let textArr = [
+    'Welcome! You may call me Ebon, but, I am known as the Pokemon Professor of the Raova Region!',
+    'You are about to join a world of Pokemon and some good old Tic Tac Toe',
+    'But first! Tell me...',
+    'Are you a boy or a girl?',
+    'Very well! And... What was your name again?'
+  ]
+  if (introPage == 3){
+    document.querySelector(".overlayText").innerHTML = textArr[introPage];
+    toggle(ebon, charaSelect)
+    return
+  }
+  document.querySelector(".overlayText").innerHTML = textArr[introPage];
+  introPage = introPage+1
+}
+
+const selecMC = (gender) =>{
+  mainChara = gender;
+  introPage = introPage+1
+  if (gender == 1){
+    toggle(carmine, crimson)
+  } else {
+    toggle(crimson, carmine)
+  }
+  introText()
+}
 
 const play = (fil, col) => {
   let resF = fil + 1;
   let resC = col + 1;
 
   if(checkWinner(board) == false){
-    if (player == 1) {
+    if (playerTurn == 1) {
       if (p1Tokens > 0) {
         board[fil][col] = 1;
-        player = player * -1;
+        playerTurn = playerTurn * -1;
         document.querySelector("#board :nth-child(" + resF + ") :nth-child(" + resC + ") img").setAttribute("src", "img/background/water.png");
         p1Tokens = p1Tokens - 1;
       } else if (p1Tokens == 0) {
@@ -26,10 +61,10 @@ const play = (fil, col) => {
           p1Tokens = p1Tokens + 1;
         }
       }
-    } else if (player == -1) {
+    } else if (playerTurn == -1) {
       if (p2Tokens > 0) {
         board[fil][col] = 2;
-        player = player * -1;
+        playerTurn = playerTurn * -1;
         if (NPC == true) {
           document.querySelector("#board :nth-child(" + resF + ") :nth-child(" + resC + ") img").setAttribute("src", "img/background/grass.webp");
         } else
@@ -44,7 +79,7 @@ const play = (fil, col) => {
       }
     }
     checkWinner(board);
-    turn(player);
+    turn(playerTurn);
   }
 };
 
@@ -68,18 +103,18 @@ const checkWinner = (board):boolean => {
 
 const turn = (player) => {
   if(checkWinner(board) == false){   
-    document.querySelector("#overlayText").innerHTML = "It's " + player + "'s turn!";
+    document.querySelector(".overlayText").innerHTML = "It's " + player + "'s turn!";
     if (player == 1 && p1Tokens == 0) {
-      document.querySelector("#overlayText").innerHTML =
+      document.querySelector(".overlayText").innerHTML =
       "It's " + player +"'s turn! But... You don't have any token left! Please select a Token to remove!";
     }
     if (player == -1 && p2Tokens == 0) {
-      document.querySelector("#overlayText").innerHTML =
+      document.querySelector(".overlayText").innerHTML =
       "It's " + player +"'s turn! But... You don't have any token left! Please select a Token to remove!";
     }
   } else {
     player = player * -1;
-    document.querySelector("#overlayText").innerHTML =
+    document.querySelector(".overlayText").innerHTML =
     "The winner is " + player +"!";
   }
 };

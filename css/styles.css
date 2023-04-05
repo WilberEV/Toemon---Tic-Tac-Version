@@ -12,7 +12,7 @@ body {
 }
 
 .none {
-    display: none;
+    display: none !important;
 }
 
 @font-face {
@@ -74,4 +74,58 @@ body {
     font-size: 2em;
     color: black;
     font-weight: bold;
+}
+
+.overlay{
+    height: 30vh;
+    width: 100vw;
+
+    background-image: url(../img/background/overlayMessage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: absolute;
+}
+
+.overlayText{
+    font-family: pokeFont;
+    font-size: 2em;
+    margin-left: 5vw;
+}
+
+#introSection{
+    height: 70vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-image: url(../img/background/introbg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#introSection img{
+    position: absolute;
+    margin-top: 20vh;
+    
+}
+
+#introSection .sprites{
+    z-index: 1;
+    position: relative;
+    margin-top: -2vh;
+    margin-left: 3vh;
+}
+
+#charaSelect{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }

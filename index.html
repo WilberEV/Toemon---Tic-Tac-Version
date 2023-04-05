@@ -13,12 +13,12 @@
 
     <div id="home">
 
-      <div id="titleScreen">
+      <div id="titleScreen" class="none">
         <div id="title">
           <img src="img/background/title.png">
           <p>Tic Tac Version</p>
         </div>
-        <div id="start">
+        <div id="start" onclick="toggle(titleScreen, introScreen)">
           <img src="img/background/start.png">
         </div>
         <div id="titleBottom">
@@ -26,6 +26,28 @@
         </div>
         <div>Wilber Esparragoza - 2023</div>
 
+      </div>
+      <div id="introScreen">
+        <div id="introSection">
+          <div id="charaSelect" class="none">
+            <div id="crimson">
+              <img src="img/background/introBase.png">
+              <img src="img/sprites/crimsonFront.png" class="sprites" onclick="selecMC(1)">
+            </div>
+            <div id="carmine">
+              <img src="img/background/introBase.png">
+              <img src="img/sprites/carmineFront.png" class="sprites" onclick="selecMC(2)">
+            </div>
+          </div>
+          <div id="ebon">
+            <img src="img/background/introBase.png">
+            <img src="img/sprites/ebon.png" class="sprites">
+          </div>
+        </div>
+        <div class="overlay" onclick="introText()">
+          <div class="overlayText">  
+          </div>
+        </div>
       </div>
 
 
@@ -132,9 +154,8 @@
       </div>
 
       <!-- bottom section -->
-      <div id="overlay">
-        <div id="overlayText">
-            
+      <div class="overlay">
+        <div class="overlayText">
         </div>
       </div>
 
