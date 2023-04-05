@@ -1,5 +1,7 @@
 let introPage = 0;
 let mainChara = 0;
+let p1Name = '';
+let p2Name = '';
 let board = [
     [0, 0, 0],
     [0, 0, 0],
@@ -10,20 +12,27 @@ let NPC = false;
 let p1Tokens = 3;
 let p2Tokens = 3;
 const toggle = (from, to) => {
-    from.classList.add("none");
-    to.classList.remove("none");
+    document.querySelector(from).classList.add("none");
+    document.querySelector(to).classList.remove("none");
 };
 const introText = () => {
     let textArr = [
         'Welcome! You may call me Ebon, but, I am known as the Pokemon Professor of the Raova Region!',
-        'You are about to join a world of Pokemon and some good old Tic Tac Toe',
+        'You are about to join a world full of Pokemon and, of course, some good old Tic Tac Toe',
         'But first! Tell me...',
         'Are you a boy or a girl?',
-        'Very well! And... What was your name again?'
+        'Very well! And...',
+        'What was your name again?'
     ];
     if (introPage == 3) {
         document.querySelector(".overlayText").innerHTML = textArr[introPage];
-        toggle(ebon, charaSelect);
+        toggle('#ebon', '#charaSelect');
+        return;
+    }
+    if (introPage == 5) {
+        document.querySelector(".overlayText").innerHTML = textArr[introPage];
+        toggle('#ebon', '#p1Name');
+        toggle('#ebon', '#p1NameSubmit');
         return;
     }
     document.querySelector(".overlayText").innerHTML = textArr[introPage];
@@ -33,12 +42,23 @@ const selecMC = (gender) => {
     mainChara = gender;
     introPage = introPage + 1;
     if (gender == 1) {
-        toggle(carmine, crimson);
+        toggle("#carmine", '#crimson');
+        document.querySelector("#crimson .sprites").setAttribute("onclick", "");
     }
     else {
-        toggle(crimson, carmine);
+        toggle('#crimson', '#carmine');
+        document.querySelector("#carmine .sprites").setAttribute("onclick", "");
     }
     introText();
+};
+const setName = (name) => {
+    if (p1Name == '') {
+        p1Name = name;
+    }
+    else {
+        p2Name = name;
+    }
+    console.log(p1Name);
 };
 const play = (fil, col) => {
     let resF = fil + 1;

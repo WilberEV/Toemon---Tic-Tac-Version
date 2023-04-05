@@ -85,14 +85,20 @@ body {
     background-repeat: no-repeat;
 
     display: flex;
-    justify-content: start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
     position: absolute;
+
 }
 
 .overlayText{
     font-family: pokeFont;
     font-size: 2em;
+    margin-left: 5vw;
+}
+
+.overlay input{
     margin-left: 5vw;
 }
 
@@ -124,6 +130,9 @@ body {
 }
 
 #charaSelect{
+    height: 70vh;
+    width: 100vw;
+
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

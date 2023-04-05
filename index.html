@@ -13,12 +13,12 @@
 
     <div id="home">
 
-      <div id="titleScreen" class="none">
+      <div id="titleScreen">
         <div id="title">
           <img src="img/background/title.png">
           <p>Tic Tac Version</p>
         </div>
-        <div id="start" onclick="toggle(titleScreen, introScreen)">
+        <div id="start" onclick="toggle('#titleScreen', '#introScreen'); introText()" >
           <img src="img/background/start.png">
         </div>
         <div id="titleBottom">
@@ -27,7 +27,7 @@
         <div>Wilber Esparragoza - 2023</div>
 
       </div>
-      <div id="introScreen">
+      <div id="introScreen" class="none">
         <div id="introSection">
           <div id="charaSelect" class="none">
             <div id="crimson">
@@ -45,8 +45,11 @@
           </div>
         </div>
         <div class="overlay" onclick="introText()">
-          <div class="overlayText">  
+          <div class="overlayText" >
           </div>
+          <form id="p1Name" class="none">
+            <input type="text" class="playerName">
+            <input type="submit" onclick="setName()">
         </div>
       </div>
 
