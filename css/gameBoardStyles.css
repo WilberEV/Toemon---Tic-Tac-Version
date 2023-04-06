@@ -59,9 +59,11 @@
 }
 
 #p2Name {
-    margin-top: 2vh;
+    margin-top: 1vh;
     margin-left: 1vh;
-    margin-right: 3vh;
+    font-family: pokeFont;
+    font-size: 1.5em;
+
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -180,8 +182,10 @@
 }
 
 #p1Name {
-    margin-bottom: 9.5vh;
-    margin-right: 10vh;
+    font-family: pokeFont;
+    font-size: 1.5em;
+    margin-bottom: 8.5vh;
+    margin-right: 9vh;
     z-index: 1;
 }
 

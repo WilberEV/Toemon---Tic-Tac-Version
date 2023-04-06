@@ -47,9 +47,10 @@
         <div class="overlay" onclick="introText()">
           <div class="overlayText" >
           </div>
-          <form id="p1Name" class="none">
-            <input type="text" class="playerName">
-            <input type="submit" onclick="setName()">
+          <div id="setP1Name" class="none">
+            <input id="playerName" type="text">
+            <button onclick="setName(); introText()">Submit</button>
+          </div>
         </div>
       </div>
 
@@ -146,7 +147,7 @@
           <!-- P1 name/tokens -->
           <div class="sideBottom">
             <img src="img/background/p1Databox.png">
-              <div id="p1Name">Player 1</div>
+              <div id="p1Name"></div>
               <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
               <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>
               <div class="tokenCount"><img src="img/background/fullToken.PNG"></div>

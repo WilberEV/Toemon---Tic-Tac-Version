@@ -18,7 +18,7 @@ const toggle = (from, to) => {
 const introText = () => {
     let textArr = [
         'Welcome! You may call me Ebon, but, I am known as the Pokemon Professor of the Raova Region!',
-        'You are about to join a world full of Pokemon and, of course, some good old Tic Tac Toe',
+        'You are about to join a world full of Pokemon and, of course, some good old Tic Tac Toe.',
         'But first! Tell me...',
         'Are you a boy or a girl?',
         'Very well! And...',
@@ -31,12 +31,22 @@ const introText = () => {
     }
     if (introPage == 5) {
         document.querySelector(".overlayText").innerHTML = textArr[introPage];
-        toggle('#ebon', '#p1Name');
-        toggle('#ebon', '#p1NameSubmit');
+        toggle('#ebon', '#setP1Name');
+        return;
+    }
+    if (introPage == 8) {
+        document.querySelector(".overlayText").innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
+        toggle('#setP1Name', '#introSection');
+        introPage = introPage + 1;
+        return;
+    }
+    if (introPage == 9) {
+        toggle('#introScreen', '#gameBoard');
         return;
     }
     document.querySelector(".overlayText").innerHTML = textArr[introPage];
     introPage = introPage + 1;
+    console.log(introPage);
 };
 const selecMC = (gender) => {
     mainChara = gender;
@@ -51,14 +61,16 @@ const selecMC = (gender) => {
     }
     introText();
 };
-const setName = (name) => {
-    if (p1Name == '') {
-        p1Name = name;
+const setName = () => {
+    if (p1Name == "") {
+        p1Name = document.getElementById("playerName").value;
+        document.querySelector("#p1Name").innerHTML = `${p1Name}`;
+        introPage = introPage + 1;
+        introText();
     }
     else {
-        p2Name = name;
+        p2Name = document.getElementById("playerName").value;
     }
-    console.log(p1Name);
 };
 const play = (fil, col) => {
     let resF = fil + 1;
@@ -122,19 +134,19 @@ const checkWinner = (board) => {
 };
 const turn = (player) => {
     if (checkWinner(board) == false) {
-        document.querySelector(".overlayText").innerHTML = "It's " + player + "'s turn!";
+        document.querySelector("#gameBoard .overlayText").innerHTML = "It's " + player + "'s turn!";
         if (player == 1 && p1Tokens == 0) {
-            document.querySelector(".overlayText").innerHTML =
-                "It's " + player + "'s turn! But... You don't have any token left! Please select a Token to remove!";
+            document.querySelector("#gameBoard .overlayText").innerHTML =
+                `It's ${p1Name}'s turn! But... You don't have any token left! Please select a Token to remove!`;
         }
         if (player == -1 && p2Tokens == 0) {
-            document.querySelector(".overlayText").innerHTML =
+            document.querySelector("#gameBoard .overlayText").innerHTML =
                 "It's " + player + "'s turn! But... You don't have any token left! Please select a Token to remove!";
         }
     }
     else {
         player = player * -1;
-        document.querySelector(".overlayText").innerHTML =
+        document.querySelector("#gameBoard .overlayText").innerHTML =
             "The winner is " + player + "!";
     }
 };
