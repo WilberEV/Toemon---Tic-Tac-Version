@@ -43,6 +43,7 @@ const introText = () => {
     if (introPage >= 9) {
         toggle('#introScreen', '#gameBoard');
         turn(playerTurn);
+        return;
     }
     document.querySelector(".overlayText").innerHTML = textArr[introPage];
     introPage++;
@@ -122,9 +123,6 @@ const play = (fil, col) => {
         checkWinner(board);
         console.log(playerTurn);
         turn(playerTurn);
-        if (NPC == true) {
-            playNPC(board);
-        }
     }
 };
 const checkWinner = (board) => {
@@ -226,7 +224,6 @@ const playNPC = (board) => {
             }
         }
     }
-    turn(playerTurn);
 };
 const turn = (player) => {
     if (checkWinner(board) == false) {
@@ -236,6 +233,9 @@ const turn = (player) => {
         }
         if (player == -1) {
             document.querySelector("#gameBoard .overlayText").innerHTML = `It's  ${p2Name}'s turn!`;
+            if (NPC == true) {
+                playNPC(board);
+            }
             return;
         }
         if (player == 1 && p1Tokens == 0) {
