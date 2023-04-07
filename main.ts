@@ -115,8 +115,8 @@ const play = (fil, col) => {
         }
       }
     }
-    checkWinner(board);
-    turn(playerTurn);
+  checkWinner(board);
+  turn(playerTurn);
   }
 };
 
@@ -139,20 +139,53 @@ const checkWinner = (board):boolean => {
 };
 
 const playNPC = (board) => {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i][0] && board[i][0] === board[i][1] && board[i][0] === board[i][2]){
-      return true;
+
+  if (p2Tokens == 3){
+    let X = Math.round((Math.random() * 10)/3)
+    let Y = Math.round((Math.random() * 10)/3)
+    if (board[X][Y] == 0) {
+      board[X][Y] = 2;
+    } else {
+      playNPC(board);
     }
-    if (board[0][i] && board[0][i] === board[1][i] && board[0][i] === board[2][i]){
-    return true;
+  } else if(p2Tokens < 3) {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][0] === board[i][1] || board[i][1] === board[i][2] || board[i][0] === board[i][2]){
+        if (board[i][0] == 0){
+          board[i][0] = 2;
+        } else if (board[i][1] == 0){
+          board[i][1] = 2;
+        } else if (board[i][2] == 0){
+          board[i][0] = 2;
+        }
+      } else if (board[0][i] === board[1][i] || board[1][i] === board[2][i] || board[0][i] === board[2][i]){
+        if (board[0][i] == 0){
+          board[0][i] = 2;
+        } else if (board[1][i] == 0){
+          board[1][i] = 2;
+        } else if (board[2][i] == 0){
+          board[2][i] = 2;
+        }
+      } else if (board[0][0] === board[1][1] || board[1][1] === board[2][2] || board[0][0] === board[2][2]){
+        if (board[0][0] == 0){
+          board[0][0] = 2;
+        } else if (board[1][1] == 0){
+          board[1][1] = 2;
+        } else if (board[2][2] == 0){
+          board[2][2] = 2;
+        }
+      } else if (board[0][2] === board[1][1] || board[1][1] === board[2][0] || board[0][2] === board[2][0]){
+        if (board[0][2] == 0){
+          board[0][2] = 2;
+        } else if (board[1][1] == 0){
+          board[1][1] = 2;
+        } else if (board[2][0] == 0){
+          board[2][0] = 2;
+        }
+      }
     }
   }
-  if (board[0][0] && board[0][0] === board[1][1] && board[0][0] === board[2][2]){
-    return true;
-  }
-  if (board[0][2] && board[0][2] === board[1][1] && board[0][2] === board[2][0]){
-    return true;
-  } else return false;
+  turn(playerTurn);
 };
 
 const turn = (player) => {
@@ -162,14 +195,20 @@ const turn = (player) => {
     }
     if (player == -1) {
       document.querySelector("#gameBoard .overlayText").innerHTML = `It's  ${p2Name}'s turn!`;
+      if(NPC == true){
+        playNPC(board);
+      }
     }
     if (player == 1 && p1Tokens == 0) {
       document.querySelector("#gameBoard .overlayText").innerHTML =
-      `It's ${p1Name}'s turn! But... You don't have any token left! Please select a Token to remove!`;
+      `It's ${p1Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
     }
     if (player == -1 && p2Tokens == 0) {
       document.querySelector("#gameBoard .overlayText").innerHTML =
-      `It's ${p1Name}'s turn! But... You don't have any token left! Please select a Token to remove!`;
+      `It's ${p2Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
+      if(NPC == true){
+        playNPC(board);
+      }
     }
   } else {
     player = player * -1;
