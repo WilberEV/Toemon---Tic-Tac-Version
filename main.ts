@@ -102,24 +102,18 @@ const setName = () => {
 
 //Game's main function
 const play = (fil, col) => {
-  console.log("Play gets fil", fil)
-  console.log("Play gets col", col)
-  console.log("Turno de ", playerTurn)
 
   //Variables to link array position with div position
   let resF = fil + 1;
   let resC = col + 1;
 
   if (checkWinner(board) == false) {
-    // >>>>>>>>> No crees que deberia ser un do while?
 
     //Player 1's turn
     if (playerTurn == 1) {
       //Stores P1's tokens on the array
       if (p1Tokens > 0 && board[fil][col] == 0) {
         board[fil][col] = 1;
-        console.log("Sets the img thingy ... -----> WATER");
-
         //Shows token on corresponding Div
         document.querySelector(`#board :nth-child(${resF}) :nth-child(${resC}) img`).setAttribute("src", "img/background/water.png");
         //Displays P1's tokens left
@@ -144,11 +138,8 @@ const play = (fil, col) => {
 
         //Changes the Token if the Computer is playing
         if (NPC == true) {
-          console.log("Sets the img thingy ... -----> GRASS");
           document.querySelector(`#board :nth-child(${resF}) :nth-child(${resC}) img`).setAttribute("src", "img/background/grass.webp");
         } else {
-          console.log("Sets the img thingy ... -----> FIRE");
-
           document.querySelector(`#board :nth-child(${resF}) :nth-child(${resC}) img`).setAttribute("src", "img/background/fire.png");
         }
         //Displays P2's tokens left
@@ -174,8 +165,6 @@ const play = (fil, col) => {
       }
     }
   }
-  console.log(playerTurn, "turn");
-  console.log(board);
   checkWinner(board);
   turn(playerTurn);
 };
@@ -223,9 +212,7 @@ const playNPC = (board) => {
     //First turn places a random token
     if (p2Tokens == 3 && playerTurn == -1) {
       let X = Math.round(Math.random() * 2);
-      console.log(X);
       let Y = Math.round(Math.random() * 2);
-      console.log(Y);
       play(X, Y);
       return;
 
@@ -315,9 +302,7 @@ const playNPC = (board) => {
 
     } else if (p2Tokens == 0) {
       let X = Math.round(Math.random() * 2);
-      console.log(X);
       let Y = Math.round(Math.random() * 2);
-      console.log(Y);
       play(X, Y);
       return;
     }
@@ -360,7 +345,6 @@ const turn = (player) => {
     }
     return //////// 
   } else {
-    console.log("WINNER TRUE")
     player = player * -1;
     if (player == 1) {
       document.querySelector(
