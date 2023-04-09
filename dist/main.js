@@ -17,21 +17,25 @@ const music = (track) => {
     switch (track) {
         case 1:
             var audio = new Audio('./assets/audio/intro.mp3');
+            audio.play();
             break;
         case 2:
-            var audio = new Audio('./assets/audio/intro.mp3');
+            var audio = new Audio('./assets/audio/azureTheme.mp3');
+            audio.play();
             break;
         case 3:
-            var audio = new Audio('./assets/audio/azureTheme.mp3');
+            var audio = new Audio('./assets/audio/jauneTheme.mp3');
+            audio.play();
             break;
         case 4:
             var audio = new Audio('./assets/audio/victory.mp3');
+            audio.play();
             break;
         default:
-            var audio = new Audio('./assets/audio/jauneTheme.mp3');
+            var audio = new Audio('./assets/audio/mainMenu.mp3');
+            audio.play();
             break;
     }
-    audio.play();
 };
 music(0);
 // Show and hide windows
@@ -86,6 +90,12 @@ const introText = () => {
             }
             break;
         case 10:
+            if (NPC == false) {
+                music(3);
+            }
+            else {
+                music(2);
+            }
             toggle("#introScreen", "#gameBoard");
             turn(playerTurn);
             break;
@@ -360,10 +370,16 @@ const turn = (player) => {
         player = player * -1;
         if (player == 1) {
             document.querySelector("#gameBoard .overlayText").innerHTML = `The winner is ${p1Name}!`;
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
             return;
         }
         if (player == -1) {
             document.querySelector("#gameBoard .overlayText").innerHTML = `The winner is ${p2Name}!`;
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
             return;
         }
     }
