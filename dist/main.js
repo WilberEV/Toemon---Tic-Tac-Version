@@ -28,50 +28,59 @@ const introText = () => {
         "But first! Tell me...",
         "Are you a boy or a girl?",
         "Very well! And...",
-        "What was your name again?",
+        "Would you mind reminding me of your name?"
     ];
-    //Hide professor and shows MCs
-    if (introPage == 3) {
-        document.querySelector(".overlayText").innerHTML = textArr[introPage];
-        toggle("#ebon", "#charaSelect");
-        console.log(introPage, 'Select character');
-        return;
+    switch (introPage) {
+        case 3:
+            console.log(introPage, 'Switch 3');
+            document.querySelector(".overlayText").innerHTML = textArr[introPage];
+            toggle("#ebon", "#charaSelect");
+            break;
+        case 5:
+            console.log(introPage, 'Switch 5');
+            document.querySelector(".overlayText").innerHTML = textArr[introPage];
+            toggle("#ebon", "#setP1Name");
+            break;
+        case 7:
+            console.log(introPage, 'Switch 7');
+            document.querySelector(".overlayText").innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
+            toggle("#setP1Name", "#introSection");
+            introPage++;
+            break;
+        case 8:
+            console.log(introPage, 'Switch 8');
+            document.querySelector(".overlayText").innerHTML = `Now, would you ike to play agaist my assistant Azure? (Vs PC) or agaist your Rival? (PvP)`;
+            if (mainChara == 1) {
+                toggle("#crimson", "#azure");
+                toggle("#crimson", "#jaune");
+            }
+            else {
+                toggle("#carmine", "#azure");
+                toggle("#carmine", "#jaune");
+            }
+            break;
+        case 9:
+            console.log(introPage, 'Switch 9');
+            if (NPC == false) {
+                document.querySelector(".overlayText").innerHTML = `Ah yes, but, eh... What was their name again?`;
+                toggle("#azure", "#setP1Name");
+            }
+            else {
+                document.querySelector(".overlayText").innerHTML = `Good, I'll tell him to get ready then`;
+                introPage++;
+            }
+            break;
+        case 10:
+            console.log(introPage, 'Switch 10');
+            toggle("#introScreen", "#gameBoard");
+            turn(playerTurn);
+            break;
+        default:
+            console.log(introPage, 'Switch default');
+            document.querySelector(".overlayText").innerHTML = textArr[introPage];
+            introPage++;
+            break;
     }
-    //Ask for player´s name
-    if (introPage == 5) {
-        document.querySelector(".overlayText").innerHTML = textArr[introPage];
-        toggle("#ebon", "#setP1Name");
-        console.log(introPage, 'P1 Name');
-        return;
-    }
-    //Hides name input
-    if (introPage == 8) {
-        document.querySelector(".overlayText").innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
-        toggle("#setP1Name", "#introSection");
-        introPage++;
-        return;
-    }
-    if (introPage == 9) {
-        document.querySelector(".overlayText").innerHTML = `Now, would you ike to play agaist my assistant Azure? (Vs PC) or agaist your Rival? (PvP)`;
-        if (mainChara == 1) {
-            toggle("#crimson", "#azure");
-            toggle("#crimson", "#jaune");
-        }
-        else {
-            toggle("#carmine", "#azure");
-            toggle("#carmine", "#jaune");
-        }
-        return;
-    }
-    //Takes player to the game
-    if (introPage >= 10) {
-        toggle("#introScreen", "#gameBoard");
-        turn(playerTurn);
-        return;
-    }
-    //Dialog cycle
-    document.querySelector(".overlayText").innerHTML = textArr[introPage];
-    introPage++;
 };
 //Character selection
 const selecMC = (gender) => {
@@ -99,7 +108,7 @@ const setName = () => {
     if (p1Name == "") {
         p1Name = document.getElementById("playerName").value;
         document.querySelector("#p1Name").innerHTML = `${p1Name}`;
-        introText();
+        return;
     }
     else {
         p2Name = document.getElementById("playerName").value;
@@ -115,10 +124,11 @@ const selecP2 = (computer) => {
         return;
     }
     else {
+        introPage++;
         toggle("#azure", "#jaune");
-        toggle("#azure", "#setP1Name");
         document.querySelector("#p2Side .sprites img").setAttribute("src", "img/sprites/snaburn.png");
         document.querySelector("#p2Side .sideMiddle .sprites:nth-child(3) img").setAttribute("src", "img/sprites/jaune.png");
+        introText();
         return;
     }
 };
