@@ -233,9 +233,7 @@ const playNPC = (board) => {
     } else if (0 < p2Tokens && p2Tokens < 3) {
 
       for (let i = 0; i < board.length; i++) {
-
         while (playerTurn == -1) {
-      
           if (      //board tiene 2 iguales en horizontal
             (board[i][0] !== 0 && board[i][1] !== 0) ||
             (board[i][0] !== 0 && board[i][2] !== 0) ||
