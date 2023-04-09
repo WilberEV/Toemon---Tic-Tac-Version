@@ -13,6 +13,27 @@ let NPC = false;
 let p1Tokens = 3;
 let p2Tokens = 3;
 var test = 0;
+const music = (track) => {
+    switch (track) {
+        case 1:
+            var audio = new Audio('./assets/audio/intro.mp3');
+            break;
+        case 2:
+            var audio = new Audio('./assets/audio/intro.mp3');
+            break;
+        case 3:
+            var audio = new Audio('./assets/audio/azureTheme.mp3');
+            break;
+        case 4:
+            var audio = new Audio('./assets/audio/victory.mp3');
+            break;
+        default:
+            var audio = new Audio('./assets/audio/jauneTheme.mp3');
+            break;
+    }
+    audio.play();
+};
+music(0);
 // Show and hide windows
 const toggle = (from, to) => {
     document.querySelector(from).classList.add("none");
