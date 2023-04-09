@@ -1,7 +1,7 @@
 // Global variables
 
 let introPage = 0;
-let mainChara = 0;
+let mainChara = 1;
 let p1Name = "";
 let p2Name = "Azure";
 let board = [
@@ -10,7 +10,7 @@ let board = [
   [0, 0, 0],
 ];
 let playerTurn = 1;
-let NPC = true;
+let NPC = false;
 let p1Tokens = 3;
 let p2Tokens = 3;
 
@@ -24,6 +24,7 @@ const toggle = (from, to) => {
 
 // Introduction with professor Ebon
 const introText = () => {
+  console.log(introPage, 'introText been called')
   //Dialog
   let textArr = [
     "Welcome! You may call me Ebon, but, I am known as the Pokemon Professor of the Raova Region!",
@@ -38,6 +39,7 @@ const introText = () => {
   if (introPage == 3) {
     document.querySelector(".overlayText").innerHTML = textArr[introPage];
     toggle("#ebon", "#charaSelect");
+    console.log(introPage, 'Select character')
     return;
   }
 
@@ -45,19 +47,30 @@ const introText = () => {
   if (introPage == 5) {
     document.querySelector(".overlayText").innerHTML = textArr[introPage];
     toggle("#ebon", "#setP1Name");
+    console.log(introPage, 'P1 Name')
     return;
   }
   //Hides name input
   if (introPage == 8) {
-    document.querySelector(
-      ".overlayText"
-    ).innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
+    document.querySelector(".overlayText").innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
     toggle("#setP1Name", "#introSection");
     introPage++;
     return;
   }
+  if (introPage == 9) {
+    document.querySelector(".overlayText").innerHTML = `Now, would you ike to play agaist my assistant Azure? (Vs PC) or agaist your Rival? (PvP)`
+    if (mainChara == 1) {
+      toggle("#crimson", "#azure");
+      toggle("#crimson", "#jaune");
+    } else {
+      toggle("#carmine", "#azure");
+      toggle("#carmine", "#jaune");
+    }
+    return;
+  }
+
   //Takes player to the game
-  if (introPage >= 9) {
+  if (introPage >= 10) {
     toggle("#introScreen", "#gameBoard");
     turn(playerTurn);
     return;
@@ -72,6 +85,7 @@ const introText = () => {
 const selecMC = (gender) => {
   mainChara = gender;
   introPage++;
+  console.log(introPage, 'selectMC function')
   if (gender == 1) {
     toggle("#carmine", "#crimson");
     document.querySelector("#crimson .sprites").setAttribute("onclick", "");
@@ -80,9 +94,7 @@ const selecMC = (gender) => {
   } else {
     toggle("#crimson", "#carmine");
     document.querySelector("#carmine .sprites").setAttribute("onclick", "");
-    document
-      .querySelector("#p1Side .sprites img")
-      .setAttribute("src", "img/sprites/carmine.png");
+    document.querySelector("#p1Side .sprites img").setAttribute("src", "img/sprites/carmine.png");
     introText();
     return;
   }
@@ -90,15 +102,34 @@ const selecMC = (gender) => {
 
 //Stores P1 and P2 names
 const setName = () => {
+  introPage++;
+  console.log(introPage, 'setName function')
   if (p1Name == "") {
     p1Name = (<HTMLInputElement>document.getElementById("playerName")).value;
     document.querySelector("#p1Name").innerHTML = `${p1Name}`;
-    introPage++;
     introText();
   } else {
     p2Name = (<HTMLInputElement>document.getElementById("playerName")).value;
+    document.querySelector("#p2Name").innerHTML = `${p2Name}`;
   }
 };
+
+
+const selecP2 = (computer) =>{
+  if (computer == true){
+    toggle("#jaune", "#azure");
+    NPC = true;
+    introPage++;
+    introText();
+    return
+  } else {
+    toggle("#azure", "#jaune");
+    toggle("#azure", "#setP1Name");
+    document.querySelector("#p2Side .sprites img").setAttribute("src", "img/sprites/snaburn.png");
+    document.querySelector("#p2Side .sideMiddle .sprites:nth-child(3) img").setAttribute("src", "img/sprites/jaune.png");
+    return
+  }
+}
 
 //Game's main function
 const play = (fil, col) => {
@@ -221,7 +252,7 @@ const playNPC = (board) => {
 
       for (let i = 0; i < board.length; i++) {
         while (playerTurn == -1) {
-          if (      //board tiene 2 iguales en horizontal
+          if (      //Checl horizontal lines
             (board[i][0] !== 0 && board[i][1] !== 0) ||
             (board[i][0] !== 0 && board[i][2] !== 0) ||
             (board[i][1] !== 0 && board[i][2] !== 0)
@@ -237,7 +268,7 @@ const playNPC = (board) => {
           return
           }
       
-          else if (     //board tiene 2 iguales en vertical
+          else if (     //Checks vertical lines
             (board[0][i] !== 0 && board[1][i] !== 0) ||
             (board[0][i] !== 0 && board[2][i] !== 0) ||
             (board[1][i] !== 0 && board[2][i] !== 0)
@@ -253,7 +284,7 @@ const playNPC = (board) => {
           return
           } 
       
-          else if (
+          else if (  //Checks diagonal
             (board[0][0] !== 0 && board[1][1] !== 0) ||
             (board[0][0] !== 0 && board[2][2] !== 0) ||
             (board[1][1] !== 0 && board[2][2] !== 0)
@@ -270,7 +301,7 @@ const playNPC = (board) => {
           }
       
       
-          else if (
+          else if (  //Checks diagonal
             (board[0][2] !== 0 && board[1][1] !== 0) ||
             (board[0][2] !== 0 && board[2][0] !== 0) ||
             (board[1][1] !== 0 && board[2][0] !== 0)
@@ -288,7 +319,7 @@ const playNPC = (board) => {
             return;
           }
       
-          else {
+          else {   //If none of the above applies, places on the first free cell
             for (let j = 0; j < board.length; j++) {
               for (let k = 0; k < board.length; k++) {
                 if (board[j][k] == 0) {
@@ -300,7 +331,7 @@ const playNPC = (board) => {
         }
       }
 
-    } else if (p2Tokens == 0) {
+    } else if (p2Tokens == 0) { //Selectes 1 random P2 Token to take out
       let X = Math.round(Math.random() * 2);
       let Y = Math.round(Math.random() * 2);
       play(X, Y);
@@ -312,7 +343,6 @@ const playNPC = (board) => {
 //Displays who's turns it is
 const turn = (player) => {
   if (checkWinner(board) == false) {
-    // no hay ganador aun
 
     if (player == 1) {
       document.querySelector(
@@ -343,7 +373,7 @@ const turn = (player) => {
       ).innerHTML = `It's ${p2Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
       return;
     }
-    return //////// 
+    return  
   } else {
     player = player * -1;
     if (player == 1) {

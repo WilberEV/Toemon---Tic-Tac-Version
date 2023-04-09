@@ -145,7 +145,10 @@
 #board div div {
     height: 9vh;
     width: 9vh;
-    background-color: blueviolet;
+    background: rgb(163,53,159);
+    background: radial-gradient(circle, rgba(163,53,159,0.4514005431274072) 0%, rgba(163,53,159,1) 100%);
+    border-radius: 15%;
+    border: 2px, blue;
 }
 
 

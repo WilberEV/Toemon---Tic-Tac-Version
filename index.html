@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <div id="home" class="none">
+    <div id="home">
 
       <div id="titleScreen">
         <div id="title">
@@ -37,6 +37,14 @@
             <div id="carmine">
               <img src="img/background/introBase.png">
               <img src="img/sprites/carmineFront.png" class="sprites" onclick="selecMC(2)">
+            </div>
+            <div id="azure" class="none">
+              <img src="img/background/introBase.png">
+              <img src="img/sprites/azure.png" class="sprites" onclick="selecP2(true)">
+            </div>
+            <div id="jaune" class="none">
+              <img src="img/background/introBase.png">
+              <img src="img/sprites/jaune.png" class="sprites" onclick="selecP2(false)">
             </div>
           </div>
           <div id="ebon">
@@ -67,7 +75,7 @@
           <!-- P2 name/tokens -->
           <div class="sideTop">
             <img src="img/background/p2Databox.png">
-              <div id="p2Name">Player 2</div>
+              <div id="p2Name">Azure</div>
               <div class="tokenCount">
                 <img src="img/background/fullToken.png">
                 <img src="img/background/fullToken.png">
@@ -169,24 +177,9 @@
 
     </div>
 
-    <div id="gameWorld">
-      <div id="labBG">
-        <img src="img/background/ebonsLab.png" alt="">
-      </div>
-      <div id="mcSprite">
-        <img src="img/background/ebonsLab.png" alt="">
-      </div>
-      <div id="azureSprite">
-        <img src="img/background/ebonsLab.png" alt="">
-      </div>
-      <div id="professorSprite">
-        <img src="img/background/ebonsLab.png" alt="">
-      </div>
-      <div id="jauneSprite">
-        <img src="img/background/ebonsLab.png" alt="">
-      </div>
-
-    </div>
+    <!-- <canvas id="canvas">
+      
+    </canvas> -->
 
     <script src="dist/main.js"></script>
   </body>
