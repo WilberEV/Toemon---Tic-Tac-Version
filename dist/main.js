@@ -20,7 +20,6 @@ const toggle = (from, to) => {
 };
 // Introduction with professor Ebon
 const introText = () => {
-    console.log(introPage, 'introText been called');
     //Dialog
     let textArr = [
         "Welcome! You may call me Ebon, but, I am known as the Pokemon Professor of the Raova Region!",
@@ -32,23 +31,19 @@ const introText = () => {
     ];
     switch (introPage) {
         case 3:
-            console.log(introPage, 'Switch 3');
             document.querySelector(".overlayText").innerHTML = textArr[introPage];
             toggle("#ebon", "#charaSelect");
             break;
         case 5:
-            console.log(introPage, 'Switch 5');
             document.querySelector(".overlayText").innerHTML = textArr[introPage];
             toggle("#ebon", "#setP1Name");
             break;
         case 7:
-            console.log(introPage, 'Switch 7');
             document.querySelector(".overlayText").innerHTML = `Very well ${p1Name}, get ready to embark on this adventure!`;
             toggle("#setP1Name", "#introSection");
             introPage++;
             break;
         case 8:
-            console.log(introPage, 'Switch 8');
             document.querySelector(".overlayText").innerHTML = `Now, would you ike to play agaist my assistant Azure? (Vs PC) or agaist your Rival? (PvP)`;
             if (mainChara == 1) {
                 toggle("#crimson", "#azure");
@@ -60,7 +55,6 @@ const introText = () => {
             }
             break;
         case 9:
-            console.log(introPage, 'Switch 9');
             if (NPC == false) {
                 document.querySelector(".overlayText").innerHTML = `Ah yes, but, eh... What was their name again?`;
                 toggle("#azure", "#setP1Name");
@@ -71,12 +65,10 @@ const introText = () => {
             }
             break;
         case 10:
-            console.log(introPage, 'Switch 10');
             toggle("#introScreen", "#gameBoard");
             turn(playerTurn);
             break;
         default:
-            console.log(introPage, 'Switch default');
             document.querySelector(".overlayText").innerHTML = textArr[introPage];
             introPage++;
             break;
@@ -86,7 +78,6 @@ const introText = () => {
 const selecMC = (gender) => {
     mainChara = gender;
     introPage++;
-    console.log(introPage, 'selectMC function');
     if (gender == 1) {
         toggle("#carmine", "#crimson");
         document.querySelector("#crimson .sprites").setAttribute("onclick", "");
@@ -104,7 +95,6 @@ const selecMC = (gender) => {
 //Stores P1 and P2 names
 const setName = () => {
     introPage++;
-    console.log(introPage, 'setName function');
     if (p1Name == "") {
         p1Name = document.getElementById("playerName").value;
         document.querySelector("#p1Name").innerHTML = `${p1Name}`;
