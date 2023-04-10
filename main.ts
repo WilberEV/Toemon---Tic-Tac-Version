@@ -372,35 +372,31 @@ const playNPC = (board) => {
 //Displays who's turns it is
 const turn = (player) => {
   if (checkWinner(board) == false) {
-
-    if (player == 1) {
-      document.querySelector(
-        "#gameBoard .overlayText"
-      ).innerHTML = `It's  ${p1Name}'s turn!`;
-      return;
-    }
-    if (player == -1) {
-      document.querySelector(
-        "#gameBoard .overlayText"
-      ).innerHTML = `It's  ${p2Name}'s turn!`;
-
-      //If playing agaist the PC, calls for the Computer's play
-      if (NPC == true) {
-        playNPC(board);
-      }
-      return;
-    }
     if (player == 1 && p1Tokens == 0) {
       document.querySelector(
         "#gameBoard .overlayText"
       ).innerHTML = `It's ${p1Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
       return;
-    }
-    if (player == -1 && p2Tokens == 0) {
-      document.querySelector(
-        "#gameBoard .overlayText"
-      ).innerHTML = `It's ${p2Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
-      return;
+    } else if (player == -1 && p2Tokens == 0) {
+        document.querySelector(
+          "#gameBoard .overlayText"
+        ).innerHTML = `It's ${p2Name}'s turn! But... They don't have any token left! Please select a Token to remove!`;
+        return;
+    } else if (player == 1) {
+        document.querySelector(
+          "#gameBoard .overlayText"
+        ).innerHTML = `It's  ${p1Name}'s turn!`;
+        return;
+    } else if (player == -1) {
+        document.querySelector(
+          "#gameBoard .overlayText"
+        ).innerHTML = `It's  ${p2Name}'s turn!`;
+
+        //If playing agaist the PC, calls for the Computer's play
+        if (NPC == true) {
+          playNPC(board);
+        }
+        return;
     }
     return  
   } else {
