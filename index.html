@@ -9,177 +9,168 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/gameBoardStyles.css" />
   </head>
+
+
   <body>
 
-    <div id="home">
 
+    <div id="home">
       <div id="titleScreen">
         <div id="title">
-          <img src="img/background/title.png">
+          <img src="img/background/title.png" />
           <p>Tic Tac Version</p>
         </div>
-        <div id="start" onclick="toggle('#titleScreen', '#introScreen'); music(1); introText()" >
-          <img src="img/background/start.png">
+        <div id="start" onclick="toggle('#titleScreen', '#introScreen'); music(1); introText()"
+        >
+          <img src="img/background/start.png" />
         </div>
         <div id="titleBottom">
-          <img src="img/sprites/thalapixFront.png" width="300px" height="300px">
+          <img
+            src="img/sprites/thalapixFront.png"
+            width="300px"
+            height="300px"
+          />
         </div>
         <div>Wilber Esparragoza - 2023</div>
-
       </div>
       <div id="introScreen" class="none">
         <div id="introSection">
           <div id="charaSelect" class="none">
             <div id="crimson">
-              <img src="./img/background/introBase.png">
-              <img src="./img/sprites/crimsonFront.png" class="sprites" onclick="selecMC(1)">
+              <img src="./img/background/introBase.png" />
+              <img src="./img/sprites/crimsonFront.png" class="sprites" onclick="selecMC(1)"/>
             </div>
             <div id="carmine">
-              <img src="./img/background/introBase.png">
-              <img src="./img/sprites/carmineFront.png" class="sprites" onclick="selecMC(2)">
+              <img src="./img/background/introBase.png" />
+              <img src="./img/sprites/carmineFront.png" class="sprites" onclick="selecMC(2)"/>
             </div>
             <div id="azure" class="none">
-              <img src="./img/background/introBase.png">
-              <img src="./img/sprites/azure.png" class="sprites" onclick="selecP2(true)">
+              <img src="./img/background/introBase.png" />
+              <img src="./img/sprites/azure.png" class="sprites" onclick="selecP2(true)"/>
             </div>
             <div id="jaune" class="none">
-              <img src="./img/background/introBase.png">
-              <img src="./img/sprites/jaune.png" class="sprites" onclick="selecP2(false)">
+              <img src="./img/background/introBase.png" />
+              <img src="./img/sprites/jaune.png" class="sprites" onclick="selecP2(false)"/>
             </div>
           </div>
           <div id="ebon">
-            <img src="./img/background/introBase.png">
-            <img src="./img/sprites/ebon.png" class="sprites">
+            <img src="./img/background/introBase.png" />
+            <img src="./img/sprites/ebon.png" class="sprites" />
           </div>
         </div>
         <div class="overlay" onclick="introText()">
-          <div class="overlayText" >
-          </div>
+          <div class="overlayText"></div>
           <div id="setP1Name" class="none">
-            <input id="playerName" type="text">
+            <input id="playerName" type="text" />
             <button onclick="setName(); introText()">Submit</button>
           </div>
         </div>
       </div>
-
-
     </div>
 
     <div id="gameBoard" class="none">
       <!-- top secction -->
       <div id="battleground">
-
         <!-- Player 1 side -->
         <div id="p1Side">
-
           <!-- P2 name/tokens -->
           <div class="sideTop">
-            <img src="./img/background/p2Databox.png">
-              <div id="p2Name">Azure</div>
-              <div class="tokenCount">
-                <img src="./img/background/fullToken.png">
-                <img src="./img/background/fullToken.png">
-                <img src="./img/background/fullToken.png">
-              </div>
+            <img src="./img/background/p2Databox.png" />
+            <div id="p2Name">Azure</div>
+            <div class="tokenCount">
+              <img src="./img/background/fullToken.png" />
+              <img src="./img/background/fullToken.png" />
+              <img src="./img/background/fullToken.png" />
+            </div>
           </div>
 
           <!-- Blank Space -->
           <div class="sideMiddle"></div>
 
           <!-- P1 + Pokemon -->
-          <div class="sideBottom"> 
-            <img src="./img/background/p1Base.png">
-            <div class="sprites"> <img src="./img/sprites/crimson.png"> </div>
-            <div class="sprites"> <img src="./img/sprites/thalapix.png"> </div>
+          <div class="sideBottom">
+            <img src="./img/background/p1Base.png" />
+            <div class="sprites"><img src="./img/sprites/crimson.png" /></div>
+            <div class="sprites"><img src="./img/sprites/thalapix.png" /></div>
           </div>
-
         </div>
 
         <!-- Middle Space -->
         <div id="boardSide">
           <div id="board">
-              <div>
-                <div onclick="play(0,0)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(0,1)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(0,2)">
-                    <img width="50vh">
-                </div>
+            <div>
+              <div onclick="play(0,0)">
+                <img width="50vh" />
               </div>
-              <div>
-                <div onclick="play(1,0)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(1,1)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(1,2)">
-                    <img width="50vh">
-                </div>
-              </div>
-              <div>
-                <div onclick="play(2,0)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(2,1)">
-                    <img width="50vh">
-                </div>
-  
-                <div onclick="play(2,2)">
-                    <img width="50vh">
-                </div>
-              </div>
-        </div>
-        </div>
 
+              <div onclick="play(0,1)">
+                <img width="50vh" />
+              </div>
+
+              <div onclick="play(0,2)">
+                <img width="50vh" />
+              </div>
+            </div>
+            <div>
+              <div onclick="play(1,0)">
+                <img width="50vh" />
+              </div>
+
+              <div onclick="play(1,1)">
+                <img width="50vh" />
+              </div>
+
+              <div onclick="play(1,2)">
+                <img width="50vh" />
+              </div>
+            </div>
+            <div>
+              <div onclick="play(2,0)">
+                <img width="50vh" />
+              </div>
+
+              <div onclick="play(2,1)">
+                <img width="50vh" />
+              </div>
+
+              <div onclick="play(2,2)">
+                <img width="50vh" />
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Player 2 side -->
         <div id="p2Side">
-          
-        <!-- Blank Space -->
+          <!-- Blank Space -->
           <div class="sideTop"></div>
 
           <!-- P2 + Pokemon -->
           <div class="sideMiddle">
-            <img src="./img/background/p2Base.png">
-            <div class="sprites"> <img src="./img/sprites/berition.png"> </div>
-            <div class="sprites"> <img src="./img/sprites/azure.png"> </div>
+            <img src="./img/background/p2Base.png" />
+            <div class="sprites"><img src="./img/sprites/berition.png" /></div>
+            <div class="sprites"><img src="./img/sprites/azure.png" /></div>
           </div>
 
           <!-- P1 name/tokens -->
           <div class="sideBottom">
-            <img src="./img/background/p1Databox.png">
+            <img src="./img/background/p1Databox.png" />
             <div id="p1Name"></div>
             <div class="tokenCount">
-              <img src="./img/background/fullToken.png">
-              <img src="./img/background/fullToken.png">
-              <img src="./img/background/fullToken.png">
+              <img src="./img/background/fullToken.png" />
+              <img src="./img/background/fullToken.png" />
+              <img src="./img/background/fullToken.png" />
             </div>
           </div>
-
         </div>
-
       </div>
 
       <!-- bottom section -->
       <div class="overlay">
-        <div class="overlayText">
-        </div>
+        <div class="overlayText"></div>
       </div>
-
     </div>
 
-    <!-- <canvas id="canvas">
-      
-    </canvas> -->
 
     <script src="dist/main.js"></script>
   </body>
