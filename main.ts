@@ -186,7 +186,7 @@ const play = (fil, col) => {
           board[fil][col] = 0;
           document.querySelector(`#board :nth-child(${resF}) :nth-child(${resC}) img`).setAttribute("src", "");
           p1Tokens = p1Tokens + 1;
-          document.querySelector(`#p2Side .tokenCount :nth-child(${p1Tokens})`).setAttribute("src", "img/background/fullToken.png");
+          document.querySelector(`#p2Side .tokenCount :nth-child(${p1Tokens})`).setAttribute("src", "./img/background/token.png");
         }
       }
 
@@ -216,7 +216,7 @@ const play = (fil, col) => {
           board[fil][col] = 0;
           document.querySelector(`#board :nth-child(${resF}) :nth-child(${resC}) img`).setAttribute("src", "");
           p2Tokens = p2Tokens + 1;
-          document.querySelector(`#p1Side .tokenCount :nth-child(${p2Tokens})`).setAttribute("src", "img/background/fullToken.png");
+          document.querySelector(`#p1Side .tokenCount :nth-child(${p2Tokens})`).setAttribute("src", "./img/background/token.png");
           //Calls for a reroll if playing the Computer
           if (NPC == true) {
             playNPC(board);
